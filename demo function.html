@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* input {
+            border: 1px, solid, rgba(0, 0, 0, 0.8);
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .start{
+            width:50px;
+            height:50px;
+            background-color: orange;
+            border-radius: 50%;
+            font-size:20px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            opacity: 0.6;
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            cursor: pointer;
+        }
+        .stop{
+            width:50px;
+            height:50px;
+            background-color: green;
+            border-radius: 50%;
+            font-size:20px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            opacity: 0.6;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            cursor: pointer;
+        } */
+        /* .wrapper{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        } */
+        /* .content{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+        .herart{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div style="width: 100px;height:100px;background-color: orange; 
+    position:absolute;left:0px;top:0px;"> -->
+    </div>
+    <!-- <div class="start" >start</div>
+    <div class ="stop">stop</div> -->
+    <!-- <div>
+        minutes: <input type="text" value="0">
+        seconds: <input type="text" value="0">
+    </div> -->
+    <!-- <div style="position: relative;"> 
+            <div style="width: 100px;height:100px;background-color:red; 
+            position: absolute;left: 0px; top:0px;"> </div>
+    </div> -->
+    <!-- <div class="wrapper">
+        <div class="content">
+            <div class="herart"></div>
+        </div>
+    </div> -->
+    <!-- <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+    </div> -->
+    <script>
+        //对象继承（圣杯模式） 
+        //    function Person(){
+
+        //    }
+        //    function Student(){
+
+        //    }    
+        //    Person.prototype.lastName = 'mm'; 
+        //   var inherit =function (Target,Origin){
+        //             function F(){}
+        //             F.prototype = Origin.prototype;
+        //             Target.prototype = new F();
+        //             Target.prototype.constuctor = Target;
+        //             Target.prototype.uber = Origin.prototype;
+        //         }
+        //         inherit(Student,Person);
+
+        //    function Person(){
+
+        //     }
+        //     function Student(){
+
+        //     }
+        //     var person1 = new Person();
+        //    var student1 = new Student();
+
+        // 构造函数继承
+        // function Person(name,age,sex){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+        // function Student(name,age,sex,grade){
+        //     Person.call(this,name,age,sex);
+        //     this.grade = grade;
+        // }
+        // var person1 = new Person('mm',18,'male');
+        // var student1 = new Student('nn',20,'female','one');
+
+        //类数组
+        // var arr = {
+        //     '0' : 'a',
+        //     '1' : 'b',
+        //     '2' : 'c',
+        //     length : 3,
+        //     push : Array.prototype.push,
+        //     slice : Array.prototype.slice 
+        // }
+        //     console.log(arr.slice(arr));
+        //数组的排序
+        // a-b>0 大的数在前，a-b<0 小的数在前面  a-b=0  不动
+        // var arr = [1,0,3,5,767,8,45,54,4,6,8,123]
+        // arr.sort(function (a,b){
+        //     return Math.random()-0.5;
+        // });
+        // console.log(arr);
+        //数组去重
+        // var arr = [0,1,2,3,4,4,5,6,1,2,0,23,2,2,4,6,6,23]; 
+        // var arr1 = [1,1,1,1,1,1,1,1,1,1,1,4,4,4,4,4,4,44,6,6,7,7,7,77,7];
+        // function DS(arr){
+        //     var obj = {
+
+        //     }
+        //    var str =[];
+        //     var len = arr.length;
+        //     for(var i = 0;i < len;i ++){
+        //         if(!obj[arr[i]]){
+        //             obj[arr[i]] = arr[i];
+        //             str.push(obj[arr[i]]);
+        //             obj[arr[i]] = 'g';
+
+        //         }
+
+        //     }
+        //     return console.log(str);
+        // 
+        // 字符串去重
+        // var str = "qrjereqrheqrrigorrirudrioruropicruruioprburorupuar"
+        // function SDS(str){
+        //     var len = str.length;
+        //     var obj = {};
+        //     var str1 =" ";
+        //     for(var i = 0; i < len; i++){
+        //         if(!obj[str[i]]){ 
+        //             str1 += str[i];
+        //             obj[str[i]] = 'g';
+        //         }
+        //     }
+        //     return console.log(str1);
+        // }
+        //对象属性拼接
+        // var Ma = {
+        //     friend1 : 'ff',
+        //     friend2 : 'gg',
+        //     friend3 : 'mm',
+        //     friend4 : 'ee',
+        //     sayFriend : function SayFriend(num){
+        //         return this['friend' + num];
+        //     } 
+        // }
+        //type 判断具体数据类型
+        // function type(target){
+        //     var to = Object.prototype.toString;
+        //     if(typeof(target) == 'object'){
+        //         if(to.call(target) == '[object Array]')
+        //             return "Array";
+        //         else if(to.call(target) == '[object Object]')
+        //             return "Object";
+        //         else if(to.call(target) == '[object Null]')
+        //             return "Null";
+        //         }
+        //         else{
+        //             return typeof(target);
+        //         }
+        //     } 
+        // type();
+        //new test()与test()运行结果区别  new test()时
+        //     function test(){
+        //     // var this = {
+        //     //     _proto_ : this.prototype;
+        //     // }
+        // }
+        // var a = 5;
+        // function test(){
+        //     a = 0;
+        //     alert(a);
+        //     alert(this.a);
+        //     var a;
+        //     alert(a);
+        // }
+        // ao{
+        //a : defined;
+
+
+        // }
+        //    new test();
+        //封装函数，返回元素e的第n层祖先节点
+        // function retnode(elem,n){
+        //     var elem1 = document.getElementsByTagName(elem)[0];
+        //     var elemn = elem1;
+        //     while(n){
+        //         if( !elemn){
+        //             break;
+        //         }
+        //         elemn = elemn.parentElement;
+        //         n--;
+        //     }
+        //     return elemn;
+        // }
+        //封装函数，返回元素的第n个兄弟节点;
+        // function retsiblingnode(elem, n) {
+        //     var elem1 = document.getElementsByTagName(elem)[0];
+        //     var elemn = elem1;
+        //     if (n == 0) {
+        //         elemn = elem1;
+        //     }
+        //     while (n && elemn) {
+        //         if (n > 0) {
+        //             elemn = elemn.nextElementSibling;
+        //             n--;
+        //         }
+        //         else {
+        //             elemn = elemn.perviousElementSibling;
+        //             n++;
+        //         }
+        //     }
+        //     return elemn;
+        // }
+
+
+        //     return elemn;
+        // }
+        //封装函数，封装myChildren功能。
+        // Element.prototype.myChildren = function (){
+        //     var child = this.childNodes;
+        //     var len = child.length;
+        //     var arr = [];
+        //     for(var i = 0 ; i <len ; i++){
+        //         if(child[i].nodeType == 1){
+        //             arr.push(child[i]);
+        //         }else{
+        //             continue;
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var div = document.getElementsByTagName('div')[0];
+        //课后作业，使用js生成DOM结构
+        //    var div = document.createElement('div');
+        //     document.body.appendChild(div); 
+        //     div.setAttribute('class','example');
+        //      var p = document.createElement('p');
+        //      div.appendChild(p);
+        //      p.setAttribute('clss','slogan');
+        //      p.innerHTML += '帅';
+        //在原型上封装一个函数insertAfter(),类似于insertBefore()
+        // Element.prototype.insertAfter = function (a,b){
+        //第一种
+        // var parent = b.parentNode;
+        // if(parent.lastChild == b)
+        // {
+        //     parent.appendChild(a);
+        // }
+        // else{
+        //     parent.insertBefore(a,b.nextSibling);
+        // }
+        //     var beforeElement = b.nexeElementSibling;
+        //     if(beforeElement == null){
+        //         this.appendChild(a);
+        //     }
+        //     else{
+        //         this.insertBefore(a,beforeElement);
+        //     }
+        // }
+        // var div = document.getElementsByTagName('div')[0];
+        // var p = document.createElement('p');
+        // var span = document.getElementsByTagName('span')[0];
+        // var i = document.getElementsByTagName('i')[0];
+        // var b = document.getElementsByTagName('b')[0];
+        //将子元素节点逆序
+        // var div = document.getElementsByTagName('div')[0];
+        // var dd = div.children;
+        // Element.prototype.ff = function (){
+        //     var arr = this.children;
+        // var len = arr.length;
+        // for(var i = len - 2; i >= 0; i--){
+        //     this.appendChild(arr[i]);
+        // }
+        // console.log(this);
+        // }
+        //循环查时间复杂度
+        // var firstTime = new Date().getTime();
+        // for(var i = 0;i < 1000000; i ++){}
+        // var lastTime = new Date().getTime();
+        // console.log(lastTime - firstTime);
+        //定时器三分钟
+        // var minutes = document.getElementsByTagName('input')[0];
+        // var seconds = document.getElementsByTagName('input')[1];
+        // var i = 0;
+        // var timer = setInterval(function () {
+        //     if (i < 59) {
+        //         seconds.value = parseInt(seconds.value)++;
+        //         i++;
+        //     } else {
+        //         minutes.value = parseInt(minutes.value)++;
+        //         seconds.value = 0;
+        //         i = 0;
+        //     }
+        //     if (parseInt(minutes.value) == 3) {
+        //         clearInterval(timer);
+        //     }
+        // }, 1000)
+        //封装函数，判断浏览器宽高
+        // function getViewOffSet(){
+        //     if(0 && window.innerHeight){
+        //         return {
+        //             w : window.innerWidth,
+        //             h : window.innerHeight,
+        //         }
+        //     }
+        //     //判断处于标准模式还是怪异模式
+        //     else if(document.compatMode == "BackCompat"){
+        //         return {
+        //             w : document.body.clientWidth,
+        //             h : document.body.clientHeight,
+        //         }
+        //     }
+        //     else{
+        //         return {
+        //             w : document.documentElement.clientWidth,
+        //             h : document.documentElement.clientHeight,
+        //         }
+        //     }
+        // }
+        // 实现自动阅读功能
+        // var stop = document.getElementsByClassName('start')[0];
+        // var start = document.getElementsByClassName('stop')[0];
+        // var timer = 0;
+        // var key = true;
+        // start.onclick = function autoread(){
+        //     timer = setInterval(function (){
+        //         if(key){
+        //             window.scrollBy(0,3);
+        //         }
+        //     },100)
+        //     key = false
+        // }
+        // stop.onclick = function stopread(){
+        //     if(key == false){   
+        //         clearInterval(timer);
+        //     }
+        //     key =true;
+        // }
+        //封装一个函数，获取元素节点的type
+        // var div = document.getElementsByTagName('div')[0];
+        // function getType(elem){
+        //     //window.getComputedStyle(ele,null)第二个参数为null表示元素，还可以写伪元素，获取伪元素类型
+        //     if(0 && window.getComputedStyle(elem,null)){
+        //         return window.getComputedStyle(elem,null)
+        //     }
+        //     else{
+        //         return elem.currentStyle;
+        //     }
+        // }
+        // getType(div); 
+        //让小方块运动
+        // var div = document.getElementsByTagName('div')[1];
+        // var timer = 0;
+        // function sport(){
+        //     timer = setInterval(function(){
+        // if(parseInt(div.style.top) < 80){
+        //     div.style.left = parseInt(div.style.left) + 10 +'px';
+        //     div.style.top =  parseInt(div.style.top) + 10 +'px';  
+        // }
+        // else {
+        //     div.style.left = parseInt(div.style.left) + 10 +'px';
+        //     div.style.top =  parseInt(div.style.top) - 10 +'px';  
+        // }
+        //     },100)
+        // }
+        // sport();
+        //封装兼容监听事件函数addEvent()
+
+        //    var  div = document.getElementsByTagName('div')[1];
+        //     function handle(){
+        //        console.log('a');
+        //    }
+        //    function addEvent(elem,type,handle){
+        //         if(elem.addEventListener){
+        //             elem.addEventListener(type,handle,false);   
+        //         }else if(elem.attachEvent){
+
+        //             elem.attachEvent('on'+type,function (){
+        //                 handle.call(elem);
+        //             });
+        //         }
+        //         else{
+        //             elem['on'+type] = handle;
+        //         }
+        //    } 
+        //事件冒泡（false）与事件捕获(true),先捕获，后冒泡，普通点击事件按顺序执行
+        // focus，blur，change，submit，reset，select 等事件不冒泡
+        // var wrapper = document.getElementsByClassName('wrapper')[0];
+        // var content = document.getElementsByClassName('content')[0];
+        // var herart = document.getElementsByClassName('herart')[0];
+        // wrapper.addEventListener('click',function(){
+        //     console.log('wrapperBubble');
+        // },false); 
+        // content.addEventListener('click',function(){
+        //     console.log('contentBubble');
+        // },false);
+        // herart.addEventListener('click',function(){
+        //     console.log('herartBubble');
+        // },false);
+        // wrapper.addEventListener('click',function(){
+        //     console.log('wrapper');
+        // },true); 
+        // content.addEventListener('click',function(){
+        //     console.log('content');
+        // },true);
+        // herart.addEventListener('click',function(){
+        //     console.log('herart');
+        // },true);
+        // 封装取消默认事件函数cancelHandle()
+        // oncontextmenu()默认鼠标右键点击事件
+        // document.oncontextmenu = function(e){
+        //     console.log('a');
+        //     cancelHandle(e);
+        //     // return false;   
+        // }
+        // function cancelHandle(event){
+        //     if(event.preventDefault){
+        //         event.preventDefault(event);
+        //     }
+        //     else{
+        //         event.returnValue = false;
+        //     }
+        // }
+        // 封装停止事件冒泡函数stopBubble()
+        // function stopBubble(event){
+        //     if(event.stopPropagation){
+        //         enent.stopPropagation();
+        //     }
+        //     else{
+        //         event.cancelBubble = true;
+        //     }
+        // }
+        //利用事件原对象进行事件委托机制输出值（比循环省效率且灵活）
+        // var ul = document.getElementsByTagName('ul')[0];
+        // ul.onclick = function (e){
+        // 兼容window.event    (IE)
+        //     var event = e || window.event;
+        //兼容 event.srcElement           (IE)s
+        //     var target = event.target || event.srcElement;
+        //     console.log(target.innerText);
+        // }
+        // 封装函数让鼠标拖着小方块运动
+        // function drag(elemn){
+        //     var disX,disY;
+        //     // 可以用addEvent()封装的函数写addeventListener,后面相同
+        //     elemn.addEventListener('mousedown',function(e){
+        //             var event = e || window.event;
+        //             disX = event.clientX - parseInt(elemn.style.left);
+        //             disY = event.clientY - parseInt(elemn.style.top);
+        //             document.addEventListener('mousemove',mouseMove,false);
+        //             document.addEventListener('mouseup',mouseUp,false);
+        //     //应该用上面封装的stopBubble()和cancelHandle()函数取消冒泡和鼠标默认事件。
+        //     },false);
+
+        //     function mouseMove(e){
+        //         var event = e || window.event;
+        //         elemn.style.left = event.clientX - disX + 'px';
+        //         elemn.style.top = event.clientY - disY + 'px';
+        //     }
+        //     function mouseUp(e){
+        //         var event = e || window.event;
+        //         document.removeEventListener('mousemove',mouseMove,false);
+        //         document.removeEventListener('mouseup',mouseUp,false);
+        //     }
+        // }
+        // var elemn = document.getElementsByTagName('div')[0];
+        // drag(elemn);
+        //封装函数loadScript()兼容所有浏览器的json异步加载方法 
+        // function loadScript(url,callback){
+        //     var script = document.createElement('script');
+        //     script.type = "type/javascript";
+
+        //     //IE9一下兼容
+        //     if(script.readyState){
+        //         script.onreadystatechange = function(){
+        //             if(script.readyState == 'complete' || script.readyState == 'loaded'){
+        //             //    org[callback]();如果js文件是JSON数据（对象/类数组）用这个
+        //             //    eval(callback);(不推荐使用)
+        //             }
+        //         }
+        //     }else{
+        //         script.onload = function(){
+        //         //    org[callback]();
+        //         //    eval(callback);(不推荐使用)
+        //         }
+        //     }
+        //     script.src = url;
+        //     document.head.appendChild(script);
+        // }
+        // loadScript('demo.js',//"test"(如果js文件是JSON数据（对象/类数组）或者上面用eval（callback）时用这个)
+        // // function(){//匿名函数执行时才会查看里面的内容，预编译时不查看里面的内容，所以可以用匿名函数解决test没有定义的问题
+        // //     test1();
+        // // });
+        //json异步加载顺序练习
+        // console.log(document.readyState);//正在解析HTML文档（script也属于标签）
+        // document.onreadystatechange = function(){
+        //     console.log(document.readyState);//当readyState变化时打印出来可以捕捉interactive状态IE兼容，谷歌等也有这个属性
+        // }    
+        // document.addEventListener("DOMContentLoaded",function(){
+        //     console.log("a");//(监听事件，当readyState改变时，打印出来)IE9以下没有
+        // },false);
+        //正则表达式面试试题
+        // var str = "100000000";
+        // var reg = /(?=(\B)(\d{3})+$)/g;
+        // console.log(str.replace(reg,"."));
+        //js封装ajax的get请求方法
+        // function myajax(url, obj, timeout, success, error) {
+        //     var timer;
+        //     var str = obj2str(obj);
+        //     if (window.XMLHttpRequest) {
+        //         var xhr = new XMLHttpRequest();
+        //     } else {
+        //         var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        //     }
+        //     xhr.open("get", url + "?" + str, true);
+        //     xhr.send();
+        //     xhr.onreadystatechange = function (res) {
+        //         if (xhr.readyState === 4) {
+        //             clearInterval(timer);
+        //             // console.log(xhr.status);
+        //             if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+        //                 success(xhr);
+        //             } else {
+        //                 error(xhr);
+        //             }
+        //         }
+        //     }
+        //     if (timeout) {
+        //         timer = setInterval(function (timeout) {
+        //             console.log("请求超时！");
+        //             xhr.abort();
+        //             clearInterval(timer);
+        //         }, timeout)
+        //     }
+        // }
+        // encodeURIComponent
+        // function obj2str(obj) {
+        //     obj.utime = new Date().getTime();
+        //     var res = [];
+        //     for (var key in obj) {
+        //         res.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+        //     }
+        //     return res.join("&");
+        // }
+    </script>
+</body>
+
+</html>
